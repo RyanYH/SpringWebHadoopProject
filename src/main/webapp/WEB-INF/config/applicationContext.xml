@@ -15,6 +15,30 @@
 		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.2.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
-
-
+    <aop:aspectj-autoproxy/>
+    <context:annotation-config/>
+    <context:component-scan base-package="com.sist.*"/>
+    <hadoop:configuration id="hadoopConf">
+     fs.default.name=hdfs://localhost:9000
+    </hadoop:configuration>
+    <hadoop:job id="movieCount"
+       input-path="/input/"
+       output-path="/output/"
+       mapper="com.sist.mapred.MovieMapper"
+       reducer="com.sist.mapred.MovieReducer"
+       configuration-ref="hadoopConf"
+       scope="request"
+    />
+    <hadoop:job-runner job-ref="movieCount" run-at-startup="false"/>
+    <bean id="viewResolver"
+       class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+        p:prefix="/"
+        p:suffix=".jsp"
+     />
 </beans>
+
+
+
+
+
+

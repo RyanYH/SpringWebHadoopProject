@@ -77,9 +77,16 @@ public class MovieDriver {
 	 {
 		 try
 		 {
+			 System.out.println("jobRunner:"+jobRunner);
 			 FileSystem fs=FileSystem.get(conf);
+			 File file=new File("/home/sist/part-r-00000");
+			 if(file.exists())
+			 {
+				 file.delete();
+			 }
 			 fs.copyToLocalFile(new Path("/output/part-r-00000"), new Path("/home/sist/part-r-00000"));
 			 fs.close();
+			 
 		 }catch(Exception ex)
 		 {
 			 System.out.println(ex.getMessage());

@@ -261,7 +261,7 @@ public class MovieDataManager {
 			//desc=desc.replace("+", "");
 			//System.out.println(desc);
 			
-			FileWriter fw=new FileWriter("/home/sist/bigdataStudy/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/MapReduceWebProject/desc.txt",true);
+			FileWriter fw=new FileWriter("/home/sist/bigdataStudy/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/SpringWebHadoopProject/desc.txt",true);
 			fw.write(desc);
 			fw.close();
 		}catch(Exception ex)
